@@ -21,7 +21,7 @@ import java.util.List;
  */
 public class JavaSparkSql {
     public static void main(String[] args) {
-        String filePath = "D:\\data\\spark\\people.json";
+        String filePath = "/Users/zhangjunfeng/IdeaProjects/quick-spark-process/spark-sql/src/main/resources/people.json";
         SparkConf conf = new SparkConf().setMaster("local").setAppName("Spark SQL");
         JavaSparkContext jsc = new JavaSparkContext(conf);
 

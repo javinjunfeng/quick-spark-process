@@ -24,13 +24,13 @@ import java.util.Arrays;
 public class WordCount {
     public static void main(String[] args) {
 
-//        SparkConf conf = new SparkConf().setMaster("local").setAppName("WordCount");
-        SparkConf conf = new SparkConf().setAppName("WordCount");
+        SparkConf conf = new SparkConf().setMaster("local").setAppName("WordCount");
+//        SparkConf conf = new SparkConf().setAppName("WordCount");
         JavaSparkContext context = new JavaSparkContext(conf);
 
-//        JavaRDD<String> javaRDD = context.textFile("D:\\data\\spark\\blsmy.txt");  -- 用于idea测试
+        JavaRDD<String> javaRDD = context.textFile("/Users/zhangjunfeng/IdeaProjects/quick-spark-process/word-count/src/main/resources/blsmy.txt");  //-- 用于idea测试
 //        JavaRDD<String> javaRDD = context.textFile("file:///mnt/data/blsmy.txt"); -- 用于集群运行(前提，运行的各节点都需要有此文件)
-        JavaRDD<String> javaRDD = context.textFile("hdfs://spark-master:9000/wordcount/blsmy.txt");
+//        JavaRDD<String> javaRDD = context.textFile("hdfs://spark-master:9000/wordcount/blsmy.txt");
         JavaRDD<String> strings = javaRDD.flatMap(new FlatMapFunction<String, String>() {
             @Override
             public Iterable<String> call(String line) throws Exception {
